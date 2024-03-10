@@ -10,6 +10,7 @@ class PaypalPayment implements PaymentGatewayInterface
     public $configSuccess;
     public function processPayment($amount, array $data,  array $configInput)
     {
+       
         $config = [
             "mode" => $configInput['mode'],
             "sandbox" => [
@@ -28,7 +29,8 @@ class PaypalPayment implements PaymentGatewayInterface
             "locale" => "en_US",
             "validate_ssl" => true
         ];
-
+        $this->configSuccess = $config;
+        session(['configSuccess' => $this->configSuccess]);
 
         $provider = new PayPalClient();
         $provider->setApiCredentials($config);
@@ -79,8 +81,10 @@ class PaypalPayment implements PaymentGatewayInterface
 
     public function paymentSuccess(Request $request)
     {
+        $this->configSuccess = session('configSuccess');
+        // dd($this->configSuccess);
         $provider = new PayPalClient;
-        $provider->setApiCredentials(config($this->configSuccess));
+        $provider->setApiCredentials($this->configSuccess);
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
 
