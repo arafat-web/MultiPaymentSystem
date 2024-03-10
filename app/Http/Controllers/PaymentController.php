@@ -13,7 +13,8 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return view('welcome');
+        $view = new PaymentService();
+        return $view->paymentView();
     }
 
     public function payment(Request $request)

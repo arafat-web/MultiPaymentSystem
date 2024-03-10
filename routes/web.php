@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('paypal', [PaymentController::class, 'index'])->name('paypal');
+Route::get('/', [PaymentController::class, 'index'])->name('payment.index');
 Route::get('paypal/payment', [PaymentController::class, 'payment'])->name('paypal.payment');
 Route::get('paypal/payment/success', [PaymentController::class, 'paymentSuccess'])->name('paypal.payment.success');
 Route::get('paypal/payment/cancel', [PaymentController::class, 'paymentCancel'])->name('paypal.payment/cancel');

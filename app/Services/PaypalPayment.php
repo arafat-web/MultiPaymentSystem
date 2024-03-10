@@ -74,7 +74,7 @@ class PaypalPayment implements PaymentGatewayInterface
     public function paymentCancel()
     {
         return redirect()
-            ->route('paypal')
+            ->route('payment.index')
             ->with('error', 'You have canceled the transaction.');
     }
 
@@ -90,11 +90,11 @@ class PaypalPayment implements PaymentGatewayInterface
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
-                ->route('paypal')
+                ->route('payment.index')
                 ->with('success', 'Transaction complete.');
         } else {
             return redirect()
-                ->route('paypal')
+                ->route('payment.index')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }

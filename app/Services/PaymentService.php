@@ -23,4 +23,21 @@ class PaymentService
 
         }
     }
+
+    public function paymentView()
+    {
+        $gateway = PaymentGateway::where('is_active', 1)->firstOrFail();
+        switch ($gateway->name) {
+            case 'paypal':
+                return view('payment.paypal');
+            case 'razorpay':
+                return view('payment.razorpay');
+            case 'stripe':
+                return view('payment.stripe');
+            case 'sslcommerz':
+                return view('payment.sslcommerz');
+            default:
+                throw new \Exception("Unsupported payment gateway");
+        }
+    }
 }
