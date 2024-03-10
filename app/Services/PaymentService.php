@@ -9,7 +9,6 @@ class PaymentService
     {
         $gateway = PaymentGateway::where('is_active', 1)->firstOrFail();
         $config = json_decode($gateway->config, true);
-
         switch ($gateway->name) {
             case 'paypal':
                 return(new PaypalPayment())->processPayment($amount, $data, $config);

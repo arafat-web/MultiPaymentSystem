@@ -8,7 +8,7 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 class PaypalPayment implements PaymentGatewayInterface
 {
     public $configSuccess;
-    public function processPayment($amount, array $data, array $configInput)
+    public function processPayment($amount, array $data,  array $configInput)
     {
         $config = [
             "mode" => $configInput['mode'],
@@ -63,9 +63,7 @@ class PaypalPayment implements PaymentGatewayInterface
                 ->with('error', 'Something went wrong.');
 
         } else {
-            return redirect()
-                ->route('create.payment')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+            dd($response);
         }
 
     }

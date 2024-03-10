@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\PaymentService;
+use App\Services\PaypalPayment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -15,7 +16,7 @@ class PaymentController extends Controller
         return view('welcome');
     }
 
-    public function processPayment(Request $request)
+    public function payment(Request $request)
     {
         $paymentService = new PaymentService();
         $this->paymentService = $paymentService;
@@ -25,5 +26,17 @@ class PaymentController extends Controller
             'email' => $request->email
         ];
         return $this->paymentService->processPayment($amount, $data);
+    }
+
+    public function paymentSuccess(Request $request)
+    {
+        $success = new PaypalPayment();
+        return $success->paymentSuccess($request);
+    }
+
+    public function paymentCancel()
+    {
+        $cancel = new PaypalPayment();
+        return $cancel->paymentCancel();
     }
 }
