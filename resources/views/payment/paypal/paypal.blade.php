@@ -31,7 +31,7 @@
                     @endif
                           
                     <center>
-                        <a href="{{ route('paypal.payment') }}" class="btn btn-success">Pay with PayPal </a>
+                        <a href="{{ route('payment') }}" class="btn btn-success">Pay with PayPal </a>
                     </center>
   
                 </div>

@@ -12,8 +12,8 @@ class PaymentService
         switch ($gateway->name) {
             case 'paypal':
                 return(new PaypalPayment())->processPayment($amount, $data, $config);
-            case 'razorpay':
-                return(new RazorpayPayment)->processPayment($amount, $data, $config);
+            case '2checkout':
+                return(new TwoCheckoutPayment())->processPayment($amount, $data, $config);
             case 'stripe':
                 return(new StripePayment())->processPayment($amount, $data, $config);
             case 'sslcommerz':
@@ -29,11 +29,11 @@ class PaymentService
         $gateway = PaymentGateway::where('is_active', 1)->firstOrFail();
         switch ($gateway->name) {
             case 'paypal':
-                return view('payment.paypal');
+                return view('payment.paypal.paypal');
             case 'razorpay':
                 return view('payment.razorpay');
             case 'stripe':
-                return view('payment.stripe');
+                return view('payment.stripe.stripe');
             case 'sslcommerz':
                 return view('payment.sslcommerz');
             default:
