@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/pay', [PaymentController::class, 'index'])->name('payment.index');
 
@@ -27,6 +27,14 @@ Route::get('paypal/payment/cancel', [PaymentController::class, 'paymentCancel'])
 
 
 // Stripe
+Route::get('/stripe', function () {
+    return view('payment.stripe.stripe');
+})->name('index');
 Route::get('stripe/payment/success', [PaymentController::class, 'stripePaymentSuccess'])->name('stripe.payment.success');
 Route::get('stripe/payment/cancel', [PaymentController::class, 'stripePaymentCancel'])->name('stripe.payment.cancel');
 
+// AamarPay
+
+Route::post('aamarpay/payment/success', [PaymentController::class, 'aamarpayPaymentSuccess'])->name('aamrpay.payment.success');
+Route::post('aamarpay/payment/fail', [PaymentController::class, 'aamarpayPaymentFail'])->name('aamrpay.payment.fail');
+Route::get('aamarpay/payment/cancel', [PaymentController::class, 'aamarpayPaymentCancel'])->name('aamrpay.payment.cancel');

@@ -113,7 +113,7 @@
                 <h5>$20.00</h5>
             </div>
         </div>
-        <form action="{{ route('payment') }}" method="GET">
+        <form action="{{ route('show') }}" method="GET">
             @csrf
             <input type="hidden" name="product" value="Stubborn Attachments" />
             <input type="hidden" name="price" value="20.00" />

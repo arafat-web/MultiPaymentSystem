@@ -61,7 +61,7 @@ class PaypalPayment implements PaymentGatewayInterface
             }
 
             return redirect()
-                ->route('cancel.payment')
+                ->route('index')
                 ->with('error', 'Something went wrong.');
 
         } else {
@@ -74,7 +74,7 @@ class PaypalPayment implements PaymentGatewayInterface
     public function paymentCancel()
     {
         return redirect()
-            ->route('payment.index')
+            ->route('index')
             ->with('error', 'You have canceled the transaction.');
     }
 
@@ -82,7 +82,6 @@ class PaypalPayment implements PaymentGatewayInterface
     public function paymentSuccess(Request $request)
     {
         $this->configSuccess = session('configSuccess');
-        // dd($this->configSuccess);
         $provider = new PayPalClient;
         $provider->setApiCredentials($this->configSuccess);
         $provider->getAccessToken();
@@ -90,11 +89,11 @@ class PaypalPayment implements PaymentGatewayInterface
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
-                ->route('payment.index')
+                ->route('index')
                 ->with('success', 'Transaction complete.');
         } else {
             return redirect()
-                ->route('payment.index')
+                ->route('index')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
         }
     }
