@@ -27,9 +27,6 @@ Route::get('paypal/payment/cancel', [PaymentController::class, 'paymentCancel'])
 
 
 // Stripe
-Route::get('/stripe', function () {
-    return view('payment.stripe.stripe');
-})->name('index');
 Route::get('stripe/payment/success', [PaymentController::class, 'stripePaymentSuccess'])->name('stripe.payment.success');
 Route::get('stripe/payment/cancel', [PaymentController::class, 'stripePaymentCancel'])->name('stripe.payment.cancel');
 

@@ -7,7 +7,6 @@ class PaymentService
 {
     public function processPayment($amount, array $data,)
     {
-        // dd($amount, $data);
         $gateway = PaymentGateway::where('name', $data['gateway'])->firstOrFail();
         if($gateway->is_active == 0){
             return redirect()->back()->with('error', 'Payment gateway is not active');

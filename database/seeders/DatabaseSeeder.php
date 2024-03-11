@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             'paypal' => [
                 'mode' => 'sandbox',
                 'client_id' => 'AdIm__wXnoq3THz55M5mgEWWyNZVQHF1mNWtrJPz5togtRLfZbfExq7fcPyxzGGk9-9IC1d_lLZYRO2H',
-                'client_secret' => 'EH-ZMtMC7Kn7RNxEHURHFAxud2Z2iyR20TQsAzUGrhPoeOlvb4HZj4UEQRvMTl8uMlnnnGx7Wspr1pNMsUL7JadKg00MnWTpw12',
+                'client_secret' => 'EH-ZMtMC7Kn7RNxEHURHFAxud2Z2iyR20TQsAzUGrhPoeOlvb4HZj4UEQRvMTl8uMlnnnGy--Rvo5PKs',
             ],
             'stripe' => [
                 'publishable_key' => 'pk_test_51OU2r2KdjtJ0K09AnX8tNZGPSpTzJjd9hbWZ6iOwRru2LMbRSpdZJ8XWic5CPl2ps5wnGx7Wspr1pNMsUL7JadKg00MnWTpw12',

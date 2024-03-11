@@ -10,7 +10,7 @@ class PaypalPayment implements PaymentGatewayInterface
     public $configSuccess;
     public function processPayment($amount, array $data,  array $configInput)
     {
-       
+    //    dd($configInput);
         $config = [
             "mode" => $configInput['mode'],
             "sandbox" => [
@@ -19,9 +19,9 @@ class PaypalPayment implements PaymentGatewayInterface
                 "app_id" => "APP-80W284485P519543T"
             ],
             "live" => [
-                "client_id" => "",
-                "client_secret" => "",
-                "app_id" => "",
+                "client_id" => $configInput['client_id'],
+                "client_secret" => $configInput['client_secret'],
+                "app_id" => "APP-80W284485P519543T"
             ],
             "payment_action" => "Sale",
             "currency" => "USD",

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AamarPayment;
 use App\Services\PaymentService;
 use App\Services\PaypalPayment;
 use App\Services\StripePayment;
@@ -50,7 +51,6 @@ class PaymentController extends Controller
 
         // Get all data from the HTTP request.
         $data = $request->all();
-
         // Process the payment using the current payment service.
         return $this->paymentService->processPayment($amount, $data);
     }
@@ -117,6 +117,24 @@ class PaymentController extends Controller
         // Call the paymentCancel method of the StripePayment class to handle the cancellation of a Stripe payment.
         // The method returns the result of the cancellation handling.
         return $cancel->paymentCancel();
+    }
+
+    public function aamarpayPaymentSuccess(Request $request)
+    {
+        $success = new AamarPayment;
+        return $success->paymentSuccess($request);
+    }
+
+    public function aamarpayPaymentCancel()
+    {
+        $cancel = new AamarPayment;
+        return $cancel->paymentCancel();
+    }
+
+    public function aamarpayPaymentFail(Request $request)
+    {
+        $fail = new AamarPayment;
+        return $fail->paymentFail($request);
     }
 
 }
