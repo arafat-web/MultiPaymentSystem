@@ -16,15 +16,15 @@ class DatabaseSeeder extends Seeder
         $gateways = [
             'paypal' => [
                 'mode' => 'sandbox',
-                'client_id' => 'AdIm__wXnoq3THz55M5mgEWWyNZVQHF1mNWtrJPz5togtRLfZbfExq7fcPyxzGGk9-9IC1d_lLZYRO2H',
-                'client_secret' => 'EH-ZMtMC7Kn7RNxEHURHFAxud2Z2iyR20TQsAzUGrhPoeOlvb4HZj4UEQRvMTl8uMlnnnGy--Rvo5PKs',
+                'client_id' => 'test_id',
+                'client_secret' => 'test_secret',
             ],
             'stripe' => [
-                'publishable_key' => 'pk_test_51OU2r2KdjtJ0K09AnX8tNZGPSpTzJjd9hbWZ6iOwRru2LMbRSpdZJ8XWic5CPl2ps5wnGx7Wspr1pNMsUL7JadKg00MnWTpw12',
-                'secret_key' => 'sk_test_51OU2r2KdjtJ0K09AajdztowtylB7pAXRdqsi2aFHNXqO1HEaR7a33YUZiHAOFTT1zoXDP9cca33JYCY7Q8K0bUSW00fd1XVpj4',
+                'publishable_key' => 'test_pk',
+                'secret_key' => 'test_sk',
             ],
             '2checkout' => [
-                'merchant' => '254928155937',
+                'merchant' => 'test_merchant',
                 'currency' => 'USD',
             ],
             'aamarpay' => [
